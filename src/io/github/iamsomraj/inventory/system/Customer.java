@@ -3,9 +3,9 @@ package io.github.iamsomraj.inventory.system;
 import java.util.Arrays;
 
 public class Customer {
-	int id;
-	String name, homePhone, cellPhone, workPhone, street, city, state, zip;
-	PurchaseOrder[] purchaseOrders;
+	private int id;
+	private String name, homePhone, cellPhone, workPhone, street, city, state, zip;
+	private PurchaseOrder[] purchaseOrders;
 
 	public Customer(int id, String name) {
 		super();

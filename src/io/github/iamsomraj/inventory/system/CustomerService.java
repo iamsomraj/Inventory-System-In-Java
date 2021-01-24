@@ -66,7 +66,7 @@ public class CustomerService {
 				break;
 			}
 		}
-		return customer.purchaseOrders;
+		return customer.getPurchaseOrders();
 	}
 
 	public PurchaseOrder[] findOrdersToBeShippedOn(Date findDate) {

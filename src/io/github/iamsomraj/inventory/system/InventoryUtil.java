@@ -124,7 +124,7 @@ public class InventoryUtil {
 
 		System.out.println("Total sales of a customer: ");
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
-			System.out.println(cust.name.toUpperCase() + ":\t$" + cust.getTotalSales());
+			System.out.println(cust.getName().toUpperCase() + ":\t$" + cust.getTotalSales());
 		}
 
 		System.out.println("Customers: ");
