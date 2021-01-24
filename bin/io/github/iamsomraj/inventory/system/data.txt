@@ -1,0 +1,5 @@
+1,Milk,100,50,GALLON
+2,Chicken,100,50,KG
+3,Egg,100,50,NO
+4,Apple,100,50,NO
+5,Orange,100,50,NO
