@@ -1,8 +1,15 @@
-package io.github.iamsomraj.inventory.system;
+package io.github.iamsomraj.inventory.tester;
 
 import java.util.Arrays;
 import java.sql.Date;
 import java.util.List;
+
+import io.github.iamsomraj.inventory.model.Customer;
+import io.github.iamsomraj.inventory.model.OrderItem;
+import io.github.iamsomraj.inventory.model.PurchaseOrder;
+import io.github.iamsomraj.inventory.model.StockItem;
+import io.github.iamsomraj.inventory.service.CustomerService;
+import io.github.iamsomraj.inventory.service.StockItemService;
 
 
 /**

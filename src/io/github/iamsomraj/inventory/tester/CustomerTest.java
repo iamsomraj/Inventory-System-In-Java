@@ -1,4 +1,6 @@
-package io.github.iamsomraj.inventory.system;
+package io.github.iamsomraj.inventory.tester;
+
+import io.github.iamsomraj.inventory.model.Customer;
 
 public class CustomerTest {
 

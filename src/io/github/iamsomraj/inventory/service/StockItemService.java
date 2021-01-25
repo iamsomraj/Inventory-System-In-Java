@@ -1,15 +1,17 @@
-package io.github.iamsomraj.inventory.system;
+package io.github.iamsomraj.inventory.service;
 
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.iamsomraj.inventory.system.StockItem.Unit;
+import io.github.iamsomraj.inventory.model.InsufficientDataException;
+import io.github.iamsomraj.inventory.model.StockItem;
+import io.github.iamsomraj.inventory.model.StockItem.Unit;
 
 public class StockItemService {
 
 	private List<StockItem> stockItems = new ArrayList<StockItem>();
-	private String fileName = "src/io/github/iamsomraj/inventory/system/data.txt";
+	private String fileName = "src/io/github/iamsomraj/inventory/data.txt";
 
 	public StockItem createStockItem(String str[]) {
 

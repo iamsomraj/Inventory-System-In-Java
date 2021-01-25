@@ -1,4 +1,4 @@
-package io.github.iamsomraj.inventory.system;
+package io.github.iamsomraj.inventory.model;
 
 public class InsufficientDataException extends Exception {
 	/**

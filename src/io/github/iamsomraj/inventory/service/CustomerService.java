@@ -1,17 +1,22 @@
-package io.github.iamsomraj.inventory.system;
+package io.github.iamsomraj.inventory.service;
 
 import java.io.FileReader;
-import java.util.Date;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import io.github.iamsomraj.inventory.model.Customer;
+import io.github.iamsomraj.inventory.model.InsufficientDataException;
+import io.github.iamsomraj.inventory.model.OrderItem;
+import io.github.iamsomraj.inventory.model.PurchaseOrder;
+
 public class CustomerService {
 
 	private List<Customer> customers = new ArrayList<Customer>();
-	private String fileName = "src/io/github/iamsomraj/inventory/system/customer-info.txt";
+	private String fileName = "src/io/github/iamsomraj/inventory/customer-info.txt";
 
 	public Customer createCustomer(String str[]) {
 		return new Customer(Integer.parseInt(str[0].trim()), str[1].trim());
@@ -75,7 +80,7 @@ public class CustomerService {
 			PurchaseOrder[] arrayOfOrders = cust.getPurchaseOrders();
 			if (arrayOfOrders != null) {
 				for (PurchaseOrder ord : arrayOfOrders) {
-					if (ord.shipDate.compareTo(findDate) == 0) {
+					if (ord.getShipDate().compareTo(findDate) == 0) {
 						orders.add(ord);
 					}
 				}
@@ -115,10 +120,10 @@ public class CustomerService {
 		}
 		for (int i = 0; i < arr.length; i++) {
 			PurchaseOrder purchaseOrder = arr[i];
-			OrderItem[] orderItems = purchaseOrder.orderItems;
+			OrderItem[] orderItems = purchaseOrder.getOrderItems();
 			for (int j = 0; j < orderItems.length; j++) {
 				OrderItem orderItem = orderItems[j];
-				listOfItems.add(orderItem.stockItem.itemDescription);
+				listOfItems.add(orderItem.getStockItem().getItemDescription());
 			}
 		}
 		return listOfItems;

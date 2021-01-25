@@ -1,4 +1,4 @@
-package io.github.iamsomraj.inventory.system;
+package io.github.iamsomraj.inventory.model;
 
 import java.util.Arrays;
 
@@ -160,29 +160,29 @@ public class Customer {
 				+ Arrays.toString(purchaseOrders) + "]";
 	}
 
-	void printPhoneNumbers() {
+	public void printPhoneNumbers() {
 		System.out.println(
 				"Customer [ homePhone=" + homePhone + ", cellPhone=" + cellPhone + ", workPhone=" + workPhone + "]");
 	}
 
-	void printShippingAddress() {
+	public void printShippingAddress() {
 		System.out.println("Customer [street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip + "]");
 	}
 
-	void setPrintingAddress(String street, String city, String state, String zip) {
+	public void setPrintingAddress(String street, String city, String state, String zip) {
 		this.street = street;
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
 	}
 
-	void setPhoneNumbers(String homePhone, String cellPhone, String workPhone) {
+	public void setPhoneNumbers(String homePhone, String cellPhone, String workPhone) {
 		this.homePhone = homePhone;
 		this.cellPhone = cellPhone;
 		this.workPhone = workPhone;
 	}
 
-	void printCustomerFields() {
+	public void printCustomerFields() {
 		System.out.println(this.toString());
 	}
 
@@ -190,19 +190,19 @@ public class Customer {
 		printCustomerFields();
 	}
 
-	void printInvoice() {
+	public void printInvoice() {
 		System.out.println("Invoice for " + name.toUpperCase() + ": ");
 		if (purchaseOrders != null) {
 			for (int i = 0; i < purchaseOrders.length; i++) {
 				PurchaseOrder purchaseOrder = purchaseOrders[i];
-				System.out.println(
-						purchaseOrder.orderDate + " - " + purchaseOrder.shipDate + " $" + purchaseOrder.sumItems());
+				System.out.println(purchaseOrder.getOrderDate() + " - " + purchaseOrder.getShipDate() + " $"
+						+ purchaseOrder.sumItems());
 			}
 		}
 		System.out.println("Total: $" + getTotalSales());
 	}
 
-	double getTotalSales() {
+	public double getTotalSales() {
 		double sum = 0;
 		if (purchaseOrders == null) {
 			return 0d;
@@ -218,7 +218,7 @@ public class Customer {
 		return purchaseOrders;
 	}
 
-	void setPurchaseOrder(PurchaseOrder[] orders) {
+	public void setPurchaseOrder(PurchaseOrder[] orders) {
 		this.purchaseOrders = orders;
 	}
 

@@ -1,20 +1,20 @@
-package io.github.iamsomraj.inventory.system;
+package io.github.iamsomraj.inventory.model;
 
 public class StockItem {
 	int itemNumber;
-	String itemDescription;
+	private String itemDescription;
 	double itemPrice;
 	int quantity;
 	String unit;
 
-	enum Unit {
+	public enum Unit {
 		KG, GALLON, NO, GM;
 	}
 
 	public StockItem(int itemNumber, String itemDescription, double itemPrice, int quantity, Unit unit) {
 		super();
 		this.itemNumber = itemNumber;
-		this.itemDescription = itemDescription;
+		this.setItemDescription(itemDescription);
 		this.itemPrice = itemPrice;
 		this.quantity = quantity;
 		if (unit == Unit.KG) {
@@ -26,17 +26,26 @@ public class StockItem {
 		} else if (unit == Unit.NO) {
 			this.unit = "numbers";
 		}
-		System.out.println(this.itemDescription + "\twith id: " + this.itemNumber + " is available at $" + this.itemPrice
+		System.out.println(this.getItemDescription() + "\twith id: " + this.itemNumber + " is available at $" + this.itemPrice
 				+ " for " + this.quantity + " (" + this.unit + ")");
 	}
 
 	@Override
 	public String toString() {
-		return "StockItem [id: " + itemNumber + ", desc: " + itemDescription + ", price: " + itemPrice + ", qty: "
+		return "StockItem [id: " + itemNumber + ", desc: " + getItemDescription() + ", price: " + itemPrice + ", qty: "
 				+ quantity + " " + unit + "]";
 	}
 
 	int getQuantity() {
 		return quantity;
 	}
+
+	public String getItemDescription() {
+		return itemDescription;
+	}
+
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
+	}
+
 }
