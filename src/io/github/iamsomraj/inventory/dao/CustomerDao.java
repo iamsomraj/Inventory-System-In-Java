@@ -17,7 +17,7 @@ public class CustomerDao {
 
 	public void createCustomer() {
 		try {
-			PreparedStatement statement = conn.prepareStatement("" + "" + "create table customers(\r\n"
+			PreparedStatement statement = conn.prepareStatement("" + "" + "create table " + tableName + "(\r\n"
 					+ "	id int(10) primary key, \r\n" + "    name varchar(20),\r\n" + "    homephone varchar(20),\r\n"
 					+ "    cellphone varchar(20),\r\n" + "    workphone varchar(20),\r\n"
 					+ "    street varchar(20),\r\n" + "    city varchar(20),\r\n" + "    state varchar(20),\r\n"

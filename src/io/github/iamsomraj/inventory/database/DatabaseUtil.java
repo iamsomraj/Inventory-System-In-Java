@@ -25,7 +25,7 @@ public class DatabaseUtil {
 				System.out.println("Database: cannot connect");
 			}
 		}
-		return null;
+		return conn;
 	}
 
 	public static void closeConnection() {

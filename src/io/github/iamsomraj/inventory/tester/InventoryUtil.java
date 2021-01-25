@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.List;
 
 import io.github.iamsomraj.inventory.dao.CustomerDao;
+import io.github.iamsomraj.inventory.dao.StockItemDao;
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.Customer;
 import io.github.iamsomraj.inventory.model.OrderItem;
@@ -172,6 +173,19 @@ public class InventoryUtil {
 		System.out.println("Fetching all the customer details from database with id: ");
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
 			customerDao.getCustomerById(cust.getId());
+		}
+
+		StockItemDao stockItemDao = new StockItemDao();
+		stockItemDao.init();
+
+		System.out.println("Storing all the stock items details in database: ");
+		for (StockItem stockItem : new StockItem[] { milk, chicken, egg, apple, orange }) {
+			stockItemDao.insertStockItem(stockItem);
+		}
+
+		System.out.println("Fetching all the stockitem details from database with item number: ");
+		for (StockItem stockItem : new StockItem[] { milk, chicken, egg, apple, orange }) {
+			stockItemDao.getStockItemByItemNumber(stockItem.getItemNumber());
 		}
 
 		DatabaseUtil.closeConnection();

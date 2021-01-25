@@ -17,16 +17,16 @@ public class StockItemService {
 
 		Unit unit = null;
 		switch (str[4].trim()) {
-		case "KG":
+		case "kilograms":
 			unit = Unit.KG;
 			break;
-		case "GALLON":
+		case "gallons":
 			unit = Unit.GALLON;
 			break;
-		case "NO":
+		case "numbers":
 			unit = Unit.NO;
 			break;
-		case "GM":
+		case "grams":
 			unit = Unit.GM;
 			break;
 		}

@@ -8,14 +8,14 @@ public class OrderItem {
 		super();
 		this.numberOfItems = numberOfItems;
 		this.setStockItem(stockItem);
-		this.getStockItem().quantity = this.getStockItem().quantity - numberOfItems;
-		System.out.println("Order Item created for: " + this.numberOfItems + " " + this.getStockItem().unit + " of "
-				+ this.getStockItem().getItemDescription());
-		System.out.println("In inventory, stocks left: " + this.getStockItem().quantity);
+		this.getStockItem().setQuantity(this.getStockItem().getQuantity() - numberOfItems);
+		System.out.println("Order Item created for: " + this.numberOfItems + " " + this.getStockItem().getUnit()
+				+ " of " + this.getStockItem().getItemDescription());
+		System.out.println("In inventory, stocks left: " + this.getStockItem().getQuantity());
 	}
 
 	double getTotal() {
-		return getStockItem().itemPrice * numberOfItems;
+		return getStockItem().getItemPrice() * numberOfItems;
 	}
 
 	@Override
