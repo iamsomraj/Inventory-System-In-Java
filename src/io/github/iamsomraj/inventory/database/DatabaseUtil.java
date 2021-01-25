@@ -2,7 +2,7 @@ package io.github.iamsomraj.inventory.database;
 
 import java.sql.*;
 
-class DatabaseUtil {
+public class DatabaseUtil {
 
 	private static Connection conn = null;
 	private static String driver = "com.mysql.jdbc.Driver";
