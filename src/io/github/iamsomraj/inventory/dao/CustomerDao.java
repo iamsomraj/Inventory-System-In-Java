@@ -61,40 +61,23 @@ public class CustomerDao {
 
 	}
 
-//	// Statement PreparedStatement CallableStatement
-//
-//	public Employee getEmployeeById(int id) {
-//		Employee e = null;
-//		try {
-//			Statement stmt = cn.createStatement();
-//			String qry = "select * from employees where empid=" + id;
-//			ResultSet rs = stmt.executeQuery(qry);
-//			if (rs.next()) {
-//				e = new Employee();
-//				e.setEmpid(rs.getInt(1));
-//				e.setEmpname(rs.getString(2));
-//				e.setDeptId(rs.getString(3));
-//				e.setJoinDate(rs.getDate(4));
-//				e.setSalary(rs.getLong(5));
-//			}
-//
-//		} catch (Exception ex) {
-//		}
-//		return e;
-//	}
-//
-//	public List<Employee> getEmployees() {
-//		return null;
-//		// fetch all employees from db;
-//	}
-//
-//	public void updateEmployee(Employee e) {
-//		// code to update Employee object
-//	}
-//
-//	public void deleteEmployeeById(int id) {
-//		// delete employee from DB with matching id
-//
-//	}
+	public Customer getCustomerById(int id) {
+		try {
+			Statement statement = conn.createStatement();
+			String query = "select * from " + tableName + " where id=" + id;
+			ResultSet rs = statement.executeQuery(query);
+			if (rs.next()) {
+				Customer customer = new Customer(rs.getInt(1), rs.getString(2));
+				customer.setPhoneNumbers(rs.getString(3), rs.getString(4), rs.getString(5));
+				customer.setPrintingAddress(rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+				System.out.println("Customer with id " + id + ": ");
+				System.out.println(customer);
+				return customer;
+			}
+		} catch (Exception e) {
+			System.out.println("Failed to fetch customer with id " + id + " in " + tableName);
+		}
+		return null;
+	}
 
 }

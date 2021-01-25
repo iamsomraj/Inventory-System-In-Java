@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.List;
 
 import io.github.iamsomraj.inventory.dao.CustomerDao;
+import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.Customer;
 import io.github.iamsomraj.inventory.model.OrderItem;
 import io.github.iamsomraj.inventory.model.PurchaseOrder;
@@ -162,10 +163,18 @@ public class InventoryUtil {
 
 		CustomerDao customerDao = new CustomerDao();
 		customerDao.init();
+
+		System.out.println("Storing all the customer details in database: ");
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
 			customerDao.insertCustomer(cust);
 		}
 
+		System.out.println("Fetching all the customer details from database with id: ");
+		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
+			customerDao.getCustomerById(cust.getId());
+		}
+
+		DatabaseUtil.closeConnection();
 	}
 
 }
