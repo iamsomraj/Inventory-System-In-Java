@@ -4,13 +4,13 @@ import java.util.Arrays;
 import java.sql.Date;
 import java.util.List;
 
+import io.github.iamsomraj.inventory.dao.CustomerDao;
 import io.github.iamsomraj.inventory.model.Customer;
 import io.github.iamsomraj.inventory.model.OrderItem;
 import io.github.iamsomraj.inventory.model.PurchaseOrder;
 import io.github.iamsomraj.inventory.model.StockItem;
 import io.github.iamsomraj.inventory.service.CustomerService;
 import io.github.iamsomraj.inventory.service.StockItemService;
-
 
 /**
  * Date 15.1.21 Assignment Create StockItem class
@@ -159,6 +159,12 @@ public class InventoryUtil {
 
 		System.out.println("Area wise total bill amount: ");
 		System.out.println(customerService.getAreaWiseTotalBill());
+
+		CustomerDao customerDao = new CustomerDao();
+		customerDao.init();
+		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
+			customerDao.insertCustomer(cust);
+		}
 
 	}
 
