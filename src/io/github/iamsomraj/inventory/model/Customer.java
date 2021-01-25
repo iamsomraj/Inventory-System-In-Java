@@ -156,8 +156,8 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id: " + id + ", " + name + ", phones: " + homePhone + " / " + cellPhone + " / " + workPhone
-				+ ", address: " + street + " " + city + " " + state + " " + zip + ", orders: "
-				+ Arrays.toString(purchaseOrders) + "]";
+				+ ", address: " + street + " " + city + " " + state + " " + zip
+				+ (purchaseOrders == null ? "" : ", orders: " + Arrays.toString(purchaseOrders)) + "]";
 	}
 
 	public void printPhoneNumbers() {

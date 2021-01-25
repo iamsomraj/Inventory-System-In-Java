@@ -6,13 +6,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
-import io.github.iamsomraj.inventory.model.Customer;
 import io.github.iamsomraj.inventory.model.StockItem;
 import io.github.iamsomraj.inventory.model.StockItem.Unit;
 
 public class StockItemDao {
 	Connection conn = DatabaseUtil.createConnection();
-	private static String tableName = "stockitems".toUpperCase();
+	private static String tableName = "stock_items".toUpperCase();
 
 	public void init() {
 		dropStockItem();

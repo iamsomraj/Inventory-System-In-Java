@@ -10,6 +10,20 @@ public class CustomerDao {
 	Connection conn = DatabaseUtil.createConnection();
 	private static String tableName = "customers".toUpperCase();
 
+	/**
+	 * @return the tableName
+	 */
+	public static String getTableName() {
+		return tableName;
+	}
+
+	/**
+	 * @param tableName the tableName to set
+	 */
+	public static void setTableName(String tableName) {
+		CustomerDao.tableName = tableName;
+	}
+
 	public void init() {
 		dropCustomer();
 		createCustomer();

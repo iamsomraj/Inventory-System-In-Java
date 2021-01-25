@@ -9,6 +9,9 @@ public class PurchaseOrder {
 	private Date shipDate;
 	private OrderItem[] orderItems;
 
+	public PurchaseOrder() {
+	}
+
 	/**
 	 * @return the poNumber
 	 */
@@ -58,9 +61,13 @@ public class PurchaseOrder {
 		return sum;
 	}
 
-	public void setShipDate(Date date) {
+	public void shipOrder(Date date) {
 		this.shipDate = date;
 		System.out.println("Purchase order: " + poNumber + " shipped at: " + this.shipDate);
+	}
+
+	public void setShipDate(Date date) {
+		this.shipDate = date;
 	}
 
 	public void create(int poNumber, Date date) {
@@ -75,8 +82,8 @@ public class PurchaseOrder {
 
 	@Override
 	public String toString() {
-		return "PurchaseOrder [order id: " + poNumber + ", " + orderDate + " - " + getShipDate() + ", items: "
-				+ Arrays.toString(getOrderItems()) + "]";
+		return "PurchaseOrder [order id: " + poNumber + ", " + orderDate + " - " + getShipDate()
+				+ (getOrderItems() == null ? "" : ", items: " + Arrays.toString(getOrderItems())) + "]";
 	}
 
 	public Date getShipDate() {
@@ -90,8 +97,5 @@ public class PurchaseOrder {
 	public void setOrderItems(OrderItem[] orderItems) {
 		this.orderItems = orderItems;
 	}
-
-
-
 
 }

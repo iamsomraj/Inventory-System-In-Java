@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.List;
 
 import io.github.iamsomraj.inventory.dao.CustomerDao;
+import io.github.iamsomraj.inventory.dao.PurchaseOrderDao;
 import io.github.iamsomraj.inventory.dao.StockItemDao;
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.Customer;
@@ -107,10 +108,10 @@ public class InventoryUtil {
 		purchaseOrder3.create(3, Date.valueOf("2020-10-9"));
 		purchaseOrder4.create(4, Date.valueOf("2020-10-11"));
 
-		purchaseOrder1.setShipDate(Date.valueOf("2020-10-11"));
-		purchaseOrder2.setShipDate(Date.valueOf("2020-10-15"));
-		purchaseOrder3.setShipDate(Date.valueOf("2020-10-19"));
-		purchaseOrder4.setShipDate(Date.valueOf("2020-10-25"));
+		purchaseOrder1.shipOrder(Date.valueOf("2020-10-11"));
+		purchaseOrder2.shipOrder(Date.valueOf("2020-10-15"));
+		purchaseOrder3.shipOrder(Date.valueOf("2020-10-19"));
+		purchaseOrder4.shipOrder(Date.valueOf("2020-10-25"));
 
 		System.out.println("Purchase Orders are displayed: ");
 		System.out.println(purchaseOrder1);
@@ -186,6 +187,27 @@ public class InventoryUtil {
 		System.out.println("Fetching all the stockitem details from database with item number: ");
 		for (StockItem stockItem : new StockItem[] { milk, chicken, egg, apple, orange }) {
 			stockItemDao.getStockItemByItemNumber(stockItem.getItemNumber());
+		}
+
+		PurchaseOrderDao purchaseOrderDao = new PurchaseOrderDao();
+		purchaseOrderDao.init();
+
+		System.out.println("Storing all the purchase order details in database: ");
+		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
+			if (cust.getPurchaseOrders() != null) {
+				for (PurchaseOrder po : cust.getPurchaseOrders()) {
+					purchaseOrderDao.insertPurchaseOrder(po, cust);
+				}
+			}
+		}
+
+		System.out.println("Fetching all the purchase order details from database: ");
+		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
+			if (cust.getPurchaseOrders() != null) {
+				for (PurchaseOrder po : cust.getPurchaseOrders()) {
+					purchaseOrderDao.getPurchaseOrderByNumber(po.getPoNumber());
+				}
+			}
 		}
 
 		DatabaseUtil.closeConnection();
