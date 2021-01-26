@@ -21,7 +21,7 @@ public class CustomerService {
 	private String fileName = "src/io/github/iamsomraj/inventory/customer-info.txt";
 
 	public Customer createCustomer(String str[]) {
-		return new Customer(Integer.parseInt(str[0].trim()), str[1].trim());
+		return new Customer(Integer.parseInt(str[0].trim()), str[1].trim(), str[2].trim(),str[3].trim(),str[4].trim(),str[5].trim(), str[6].trim(), str[7].trim(), str[8].trim());
 	}
 
 	public CustomerService() {

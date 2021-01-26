@@ -1,4 +1,6 @@
 Invoice for JAMIE: 
+Current Date & Time: Tue Jan 26 19:08:55 IST 2021
+Purchase Orders are displayed: 
 2021-01-05 - 2021-01-11 $2600.0
 2021-01-09 - 2021-01-25 $1500.0
-Total: $4100.0
+Order Summary: $4100.0

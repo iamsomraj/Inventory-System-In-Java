@@ -9,6 +9,29 @@ public class Customer {
 	private String name, homePhone, cellPhone, workPhone, street, city, state, zip;
 	private PurchaseOrder[] purchaseOrders;
 
+	public Customer(int id, String name, String homePhone, String cellPhone, String workPhone, String street,
+			String city, String state, String zip) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.homePhone = homePhone;
+		this.cellPhone = cellPhone;
+		this.workPhone = workPhone;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		System.out.println(("Customer #" + this.id + ": ").toUpperCase());
+		System.out.println((this.name + " registered as a customer").toUpperCase());
+		System.out.println("Contact Details: ");
+		System.out.println(this.homePhone);
+		System.out.println(this.cellPhone);
+		System.out.println(this.workPhone);
+		System.out.println("Address : ");
+		System.out.println(this.street + " " + this.city + " " + this.state + " " + this.zip);
+		System.out.println();
+	}
+
 	public Customer(int id, String name) {
 		super();
 		this.id = id;
@@ -193,8 +216,15 @@ public class Customer {
 	}
 
 	public void printInvoice() {
+		if (purchaseOrders == null) {
+			return;
+		}
 		String invoice = "";
 		invoice += "Invoice for " + name.toUpperCase() + ": ";
+		invoice += "\n";
+		invoice += "Current Date & Time: " + new java.util.Date(System.currentTimeMillis());
+		invoice += "\n";
+		invoice += "Purchase Orders are displayed: ";
 		System.out.println(invoice);
 		if (purchaseOrders != null) {
 			for (int i = 0; i < purchaseOrders.length; i++) {
@@ -207,9 +237,9 @@ public class Customer {
 			}
 		}
 		invoice += "\n";
-		invoice += "Total: $" + getTotalSales();
+		invoice += "Order Summary: $" + getTotalSales();
 		FileService.writeToFile(name.toUpperCase() + " - INVOICE", "txt", invoice);
-		System.out.println("Total: $" + getTotalSales());
+		System.out.println("Order Summary: $" + getTotalSales());
 	}
 
 	public double getTotalSales() {

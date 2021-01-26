@@ -2,6 +2,7 @@ package io.github.iamsomraj.inventory.tester;
 
 import java.util.Arrays;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
@@ -200,7 +201,7 @@ public class InventoryUtil {
 
 		printLines();
 
-		System.out.println("Total sale done in last month: ");
+		System.out.println("Total sale done for the last month (" + LocalDate.now().minusMonths(1) + " - " + LocalDate.now() + "): ");
 		System.out.println(customerService.totalSaleDoneInLastMonth());
 		
 		printLines();

@@ -27,61 +27,60 @@ I have created this repository for creating my **own customized Inventory System
 
 📦inventory
 
-┣ 📂dao
+ ┣ 📂dao
 
-┃ ┣ 📜CustomerDao.java
+ ┃ ┣ 📜CustomerDao.java
 
-┃ ┣ 📜OrderItemDao.java
+ ┃ ┣ 📜OrderItemDao.java
 
-┃ ┣ 📜PurchaseOrderDao.java
+ ┃ ┣ 📜PurchaseOrderDao.java
 
-┃ ┗ 📜StockItemDao.java
+ ┃ ┗ 📜StockItemDao.java
 
-┣ 📂database
+ ┣ 📂database
 
-┃ ┗ 📜DatabaseUtil.java
+ ┃ ┗ 📜DatabaseUtil.java
 
-┣ 📂invoices
+ ┣ 📂invoices
 
-┃ ┣ 📜BILL - INVOICE.txt
+ ┃ ┣ 📜BILL - INVOICE.txt
 
-┃ ┣ 📜JAMIE - INVOICE.txt
+ ┃ ┣ 📜JAMIE - INVOICE.txt
 
-┃ ┣ 📜JOE - INVOICE.txt
+ ┃ ┗ 📜SOMRAJ - INVOICE.txt
 
-┃ ┗ 📜SOMRAJ - INVOICE.txt
+ ┣ 📂model
 
-┣ 📂model
+ ┃ ┣ 📜Customer.java
 
-┃ ┣ 📜Customer.java
+ ┃ ┣ 📜InsufficientDataException.java
 
-┃ ┣ 📜InsufficientDataException.java
+ ┃ ┣ 📜OrderItem.java
 
-┃ ┣ 📜OrderItem.java
+ ┃ ┣ 📜PurchaseOrder.java
 
-┃ ┣ 📜PurchaseOrder.java
+ ┃ ┗ 📜StockItem.java
 
-┃ ┗ 📜StockItem.java
+ ┣ 📂service
 
-┣ 📂service
+ ┃ ┣ 📜CustomerService.java
 
-┃ ┣ 📜CustomerService.java
+ ┃ ┣ 📜DatabaseService.java
 
-┃ ┣ 📜DatabaseService.java
+ ┃ ┣ 📜FileService.java
 
-┃ ┣ 📜FileService.java
+ ┃ ┗ 📜StockItemService.java
 
-┃ ┗ 📜StockItemService.java
+ ┣ 📂tester
 
-┣ 📂tester
+ ┃ ┣ 📜CustomerTest.java
 
-┃ ┣ 📜CustomerTest.java
+ ┃ ┗ 📜InventoryUtil.java
 
-┃ ┗ 📜InventoryUtil.java
+ ┣ 📜customer-info.txt
 
-┣ 📜customer-info.txt
+ ┗ 📜data.txt
 
-┗ 📜data.txt
 
 ## Developer
 
