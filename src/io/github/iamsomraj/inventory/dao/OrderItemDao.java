@@ -12,7 +12,6 @@ import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.OrderItem;
 import io.github.iamsomraj.inventory.model.PurchaseOrder;
 import io.github.iamsomraj.inventory.model.StockItem;
-import io.github.iamsomraj.inventory.service.CustomerService;
 
 public class OrderItemDao {
 	Connection conn = DatabaseUtil.createConnection();

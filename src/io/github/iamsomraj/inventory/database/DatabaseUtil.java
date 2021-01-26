@@ -5,7 +5,6 @@ import java.sql.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
-import io.github.iamsomraj.inventory.service.CustomerService;
 
 
 public class DatabaseUtil {

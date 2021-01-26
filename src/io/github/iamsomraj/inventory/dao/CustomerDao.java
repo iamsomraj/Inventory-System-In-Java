@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.Customer;
-import io.github.iamsomraj.inventory.service.CustomerService;
 
 public class CustomerDao {
 

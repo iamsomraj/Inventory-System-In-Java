@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.StockItem;
 import io.github.iamsomraj.inventory.model.StockItem.Unit;
-import io.github.iamsomraj.inventory.service.CustomerService;
 
 public class StockItemDao {
 	Connection conn = DatabaseUtil.createConnection();
