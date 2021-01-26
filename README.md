@@ -23,64 +23,88 @@ I have created this repository for creating my **own customized Inventory System
 
 5. Finally, each and every information is stored into the database.
 
+## Features
+
+- 💥 Exception Handling
+
+  > Used mainly during file handling and database operations.
+
+- 💥 File handling
+
+  > Used for reading ( fetching information ) and writing data ( printing basic invoice ).
+
+- 💥 Loggers
+
+  > Used loggers for an overview of exceptions and better handling by developers.
+
+- 💥 JDBC
+
+  > Used for database connectivity.
+
+- 💥 Collections Framework
+
+  > Used Lists, Sets and Maps for storing data in an ordered manner.
+
+- 💥 Object Oriented Approach
+  > Used for modularizing the whole project.
+
 ## Project Structure
 
 📦inventory
 
- ┣ 📂dao
+┣ 📂dao
 
- ┃ ┣ 📜CustomerDao.java
+┃ ┣ 📜CustomerDao.java
 
- ┃ ┣ 📜OrderItemDao.java
+┃ ┣ 📜OrderItemDao.java
 
- ┃ ┣ 📜PurchaseOrderDao.java
+┃ ┣ 📜PurchaseOrderDao.java
 
- ┃ ┗ 📜StockItemDao.java
+┃ ┗ 📜StockItemDao.java
 
- ┣ 📂database
+┣ 📂database
 
- ┃ ┗ 📜DatabaseUtil.java
+┃ ┗ 📜DatabaseUtil.java
 
- ┣ 📂invoices
+┣ 📂invoices
 
- ┃ ┣ 📜BILL - INVOICE.txt
+┃ ┣ 📜BILL - INVOICE.txt
 
- ┃ ┣ 📜JAMIE - INVOICE.txt
+┃ ┣ 📜JAMIE - INVOICE.txt
 
- ┃ ┗ 📜SOMRAJ - INVOICE.txt
+┃ ┗ 📜SOMRAJ - INVOICE.txt
 
- ┣ 📂model
+┣ 📂model
 
- ┃ ┣ 📜Customer.java
+┃ ┣ 📜Customer.java
 
- ┃ ┣ 📜InsufficientDataException.java
+┃ ┣ 📜InsufficientDataException.java
 
- ┃ ┣ 📜OrderItem.java
+┃ ┣ 📜OrderItem.java
 
- ┃ ┣ 📜PurchaseOrder.java
+┃ ┣ 📜PurchaseOrder.java
 
- ┃ ┗ 📜StockItem.java
+┃ ┗ 📜StockItem.java
 
- ┣ 📂service
+┣ 📂service
 
- ┃ ┣ 📜CustomerService.java
+┃ ┣ 📜CustomerService.java
 
- ┃ ┣ 📜DatabaseService.java
+┃ ┣ 📜DatabaseService.java
 
- ┃ ┣ 📜FileService.java
+┃ ┣ 📜FileService.java
 
- ┃ ┗ 📜StockItemService.java
+┃ ┗ 📜StockItemService.java
 
- ┣ 📂tester
+┣ 📂tester
 
- ┃ ┣ 📜CustomerTest.java
+┃ ┣ 📜CustomerTest.java
 
- ┃ ┗ 📜InventoryUtil.java
+┃ ┗ 📜InventoryUtil.java
 
- ┣ 📜customer-info.txt
+┣ 📜customer-info.txt
 
- ┗ 📜data.txt
-
+┗ 📜data.txt
 
 ## Developer
 
