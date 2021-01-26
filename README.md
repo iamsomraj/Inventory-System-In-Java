@@ -18,7 +18,9 @@ I have created this repository for creating my **own customised Inventory System
 
 3. Now, after everything, I have connected my project with the database.
 4. Before storing into database, I am initializing the complete database and setting up the database as per my current project needs.
+
    > This has made my project independent from all sorts of database setup including creating databases and tables and constraints etc. Any one can also customize this as per their requirement 😊
+
 5. Finally, each and every information is stored into the database.
 
 ## Project Structure
@@ -45,8 +47,7 @@ I have created this repository for creating my **own customised Inventory System
 ┃ ┣ 📜CustomerTest.java
 ┃ ┗ 📜InventoryUtil.java
 ┣ 📜customer-info.txt
-┣ 📜data.txt
-┗ 📜Output.txt
+┗ 📜data.txt
 
 ## Developer
 
