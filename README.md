@@ -1,6 +1,52 @@
 # Inventory System In Java
 
-I have created this repository for creating my own customised Inventory System.
+I have created this repository for creating my **own customised Inventory System**. I have used **Java, JDBC** for the project. The database used here is **MySQL**.
+
+## Workflow
+
+> In the next few lines, I would like to summarize the general workflow of my project for easy understanding.
+
+1. Fetching infomration from text files
+2. With the fetched information, I have done the following operations in the same order:
+
+- Creating customers and updating customer information.
+- Creating stock items and setting the values of stock items.
+- Adding those stock items into order items and updating the stocks left.
+- Clubbing the order items into purchase orders.
+- Setting the purchase orders for each customers with appropiate values.
+- Implementing various methods related to the functionality of project.
+
+3. Now, after everything, I have connected my project with the database.
+4. Before storing into database, I am initializing the complete database and setting up the database as per my current project needs.
+   > This has made my project independent from all sorts of database setup including creating databases and tables and constraints etc. Any one can also customize this as per their requirement 😊
+5. Finally, each and every information is stored into the database.
+
+## Project Structure
+
+📦inventory
+┣ 📂dao
+┃ ┣ 📜CustomerDao.java
+┃ ┣ 📜OrderItemDao.java
+┃ ┣ 📜PurchaseOrderDao.java
+┃ ┗ 📜StockItemDao.java
+┣ 📂database
+┃ ┗ 📜DatabaseUtil.java
+┣ 📂model
+┃ ┣ 📜Customer.java
+┃ ┣ 📜InsufficientDataException.java
+┃ ┣ 📜OrderItem.java
+┃ ┣ 📜PurchaseOrder.java
+┃ ┗ 📜StockItem.java
+┣ 📂service
+┃ ┣ 📜CustomerService.java
+┃ ┣ 📜DatabaseService.java
+┃ ┗ 📜StockItemService.java
+┣ 📂tester
+┃ ┣ 📜CustomerTest.java
+┃ ┗ 📜InventoryUtil.java
+┣ 📜customer-info.txt
+┣ 📜data.txt
+┗ 📜Output.txt
 
 ## Developer
 
