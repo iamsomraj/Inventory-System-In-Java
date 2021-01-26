@@ -13,6 +13,20 @@ public class StockItemDao {
 	Connection conn = DatabaseUtil.createConnection();
 	private static String tableName = "stock_items".toUpperCase();
 
+	/**
+	 * @return the tableName
+	 */
+	public static String getTableName() {
+		return tableName;
+	}
+
+	/**
+	 * @param tableName the tableName to set
+	 */
+	public static void setTableName(String tableName) {
+		StockItemDao.tableName = tableName;
+	}
+
 	public void init() {
 		dropStockItem();
 		createStockItem();

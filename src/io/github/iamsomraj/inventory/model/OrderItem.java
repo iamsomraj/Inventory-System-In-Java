@@ -4,6 +4,24 @@ public class OrderItem {
 	private int numberOfItems;
 	private StockItem stockItem;
 
+	/**
+	 * @return the numberOfItems
+	 */
+	public int getNumberOfItems() {
+		return numberOfItems;
+	}
+
+	/**
+	 * @param numberOfItems the numberOfItems to set
+	 */
+	public void setNumberOfItems(int numberOfItems) {
+		this.numberOfItems = numberOfItems;
+	}
+	
+	public OrderItem() {
+		super();
+	}
+
 	public OrderItem(int numberOfItems, StockItem stockItem) {
 		super();
 		this.numberOfItems = numberOfItems;

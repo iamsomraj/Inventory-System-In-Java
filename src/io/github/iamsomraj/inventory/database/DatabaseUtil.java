@@ -52,6 +52,22 @@ public class DatabaseUtil {
 			System.out.println("Database: quick test cannot be performed");
 		}
 	}
+	
+
+	public static void initialSetup() {
+		try {
+			if ( conn != null) {				
+				PreparedStatement stmt = conn.prepareStatement("drop database " + database);
+				stmt.executeUpdate();
+				stmt = conn.prepareStatement("create database " + database);
+				stmt.executeUpdate();
+				stmt = conn.prepareStatement("use " + database);
+				stmt.executeUpdate();
+			}
+		} catch (Exception e) {
+			System.out.println("Database: quick test cannot be performed");
+		}
+	}
 
 	public static void main(String args[]) {
 		try {

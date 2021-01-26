@@ -14,6 +14,20 @@ public class PurchaseOrderDao {
 	Connection conn = DatabaseUtil.createConnection();
 	private static String tableName = "purchase_orders".toUpperCase();
 
+	/**
+	 * @return the tableName
+	 */
+	public static String getTableName() {
+		return tableName;
+	}
+
+	/**
+	 * @param tableName the tableName to set
+	 */
+	public static void setTableName(String tableName) {
+		PurchaseOrderDao.tableName = tableName;
+	}
+
 	public void init() {
 		dropPurchaseOrder();
 		createPurchaseOrder();
@@ -22,7 +36,7 @@ public class PurchaseOrderDao {
 	public void createPurchaseOrder() {
 		try {
 			PreparedStatement statement = conn.prepareStatement("" + "\r\n" + "CREATE TABLE " + tableName + " (\r\n"
-					+ "    poNumber INT(10),\r\n" + "    orderDate DATE,\r\n" + "    shipDate DATE,\r\n"
+					+ "    poNumber INT(10) PRIMARY KEY,\r\n" + "    orderDate DATE,\r\n" + "    shipDate DATE,\r\n"
 					+ "    customerId INT(10),\r\n" + "    FOREIGN KEY (customerId)\r\n" + "        REFERENCES "
 					+ CustomerDao.getTableName() + " (id)\r\n" + ");" + "");
 			statement.executeUpdate();
@@ -53,6 +67,7 @@ public class PurchaseOrderDao {
 			statement.executeUpdate();
 			System.out.println("Purchase Order " + purchaseOrder.getPoNumber() + " is inserted in " + tableName);
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("Failed to insert in " + tableName);
 		}
 

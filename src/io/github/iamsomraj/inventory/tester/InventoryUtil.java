@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.List;
 
 import io.github.iamsomraj.inventory.dao.CustomerDao;
+import io.github.iamsomraj.inventory.dao.OrderItemDao;
 import io.github.iamsomraj.inventory.dao.PurchaseOrderDao;
 import io.github.iamsomraj.inventory.dao.StockItemDao;
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
@@ -13,6 +14,7 @@ import io.github.iamsomraj.inventory.model.OrderItem;
 import io.github.iamsomraj.inventory.model.PurchaseOrder;
 import io.github.iamsomraj.inventory.model.StockItem;
 import io.github.iamsomraj.inventory.service.CustomerService;
+import io.github.iamsomraj.inventory.service.DatabaseService;
 import io.github.iamsomraj.inventory.service.StockItemService;
 
 /**
@@ -163,40 +165,33 @@ public class InventoryUtil {
 		System.out.println("Area wise total bill amount: ");
 		System.out.println(customerService.getAreaWiseTotalBill());
 
-		CustomerDao customerDao = new CustomerDao();
-		customerDao.init();
+		DatabaseService databaseService = new DatabaseService();
 
 		System.out.println("Storing all the customer details in database: ");
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
-			customerDao.insertCustomer(cust);
+			databaseService.insertCustomer(cust);
 		}
 
 		System.out.println("Fetching all the customer details from database with id: ");
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
-			customerDao.getCustomerById(cust.getId());
+			databaseService.getCustomerById(cust.getId());
 		}
-
-		StockItemDao stockItemDao = new StockItemDao();
-		stockItemDao.init();
 
 		System.out.println("Storing all the stock items details in database: ");
 		for (StockItem stockItem : new StockItem[] { milk, chicken, egg, apple, orange }) {
-			stockItemDao.insertStockItem(stockItem);
+			databaseService.insertStockItem(stockItem);
 		}
 
 		System.out.println("Fetching all the stockitem details from database with item number: ");
 		for (StockItem stockItem : new StockItem[] { milk, chicken, egg, apple, orange }) {
-			stockItemDao.getStockItemByItemNumber(stockItem.getItemNumber());
+			databaseService.getStockItemByItemNumber(stockItem.getItemNumber());
 		}
-
-		PurchaseOrderDao purchaseOrderDao = new PurchaseOrderDao();
-		purchaseOrderDao.init();
 
 		System.out.println("Storing all the purchase order details in database: ");
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
 			if (cust.getPurchaseOrders() != null) {
 				for (PurchaseOrder po : cust.getPurchaseOrders()) {
-					purchaseOrderDao.insertPurchaseOrder(po, cust);
+					databaseService.insertPurchaseOrder(po, cust);
 				}
 			}
 		}
@@ -205,7 +200,33 @@ public class InventoryUtil {
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
 			if (cust.getPurchaseOrders() != null) {
 				for (PurchaseOrder po : cust.getPurchaseOrders()) {
-					purchaseOrderDao.getPurchaseOrderByNumber(po.getPoNumber());
+					databaseService.getPurchaseOrderByNumber(po.getPoNumber());
+				}
+			}
+		}
+
+		System.out.println("Storing all the order item details in database: ");
+		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
+			if (cust.getPurchaseOrders() != null) {
+				for (PurchaseOrder po : cust.getPurchaseOrders()) {
+					if (po.getOrderItems() != null) {
+						for (OrderItem orderItem : po.getOrderItems()) {
+							databaseService.insertOrderItem(orderItem, po);
+						}
+					}
+				}
+			}
+		}
+
+		System.out.println("Fetching all the order item details from database: ");
+		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
+			if (cust.getPurchaseOrders() != null) {
+				for (PurchaseOrder po : cust.getPurchaseOrders()) {
+					if (po.getOrderItems() != null) {
+						for (OrderItem orderItem : po.getOrderItems()) {
+							databaseService.getOrderItemByPurchaseOrderAndStockItem(po, orderItem.getStockItem());
+						}
+					}
 				}
 			}
 		}
