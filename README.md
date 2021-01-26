@@ -13,13 +13,13 @@ I have created this repository for creating my **own customized Inventory System
 - Creating stock items and setting the values of stock items.
 - Adding those stock items into order items and updating the stocks left.
 - Clubbing the order items into purchase orders.
-- Setting the purchase orders for each customers with appropiate values.
+- Setting the purchase orders for each customer with appropiate values.
 - Implementing various methods related to the functionality of project.
 
 3. Now, after everything, I have connected my project with the database.
 4. Before storing into database, I am initializing the complete database and setting up the database as per my current project needs.
 
-   > This has made my project independent from all sorts of database setup including creating databases and tables and constraints etc. Any one can also customize this as per their requirement 😊
+   > This has made my project free from all sorts of prior database setup including creating databases and tables and constraints etc. Any one can also customize this behaviour as per their requirement 😊
 
 5. Finally, each and every information is stored into the database.
 
