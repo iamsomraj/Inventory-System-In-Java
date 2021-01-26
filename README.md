@@ -1,6 +1,6 @@
 # Inventory System In Java
 
-I have created this repository for creating my **own customised Inventory System**. I have used **Java, JDBC** for the project. The database used here is **MySQL**.
+I have created this repository for creating my **own customized Inventory System**. I have used **Java, JDBC** for the project. The database used here is **MySQL**.
 
 ## Workflow
 
@@ -26,27 +26,49 @@ I have created this repository for creating my **own customised Inventory System
 ## Project Structure
 
 📦inventory
+
 ┣ 📂dao
+
 ┃ ┣ 📜CustomerDao.java
+
 ┃ ┣ 📜OrderItemDao.java
+
 ┃ ┣ 📜PurchaseOrderDao.java
+
 ┃ ┗ 📜StockItemDao.java
+
 ┣ 📂database
+
 ┃ ┗ 📜DatabaseUtil.java
+
 ┣ 📂model
+
 ┃ ┣ 📜Customer.java
+
 ┃ ┣ 📜InsufficientDataException.java
+
 ┃ ┣ 📜OrderItem.java
+
 ┃ ┣ 📜PurchaseOrder.java
+
 ┃ ┗ 📜StockItem.java
+
 ┣ 📂service
+
 ┃ ┣ 📜CustomerService.java
+
 ┃ ┣ 📜DatabaseService.java
+
 ┃ ┗ 📜StockItemService.java
+
 ┣ 📂tester
+
 ┃ ┣ 📜CustomerTest.java
+
 ┃ ┗ 📜InventoryUtil.java
+
 ┣ 📜customer-info.txt
+
 ┗ 📜data.txt
 
 ## Developer
