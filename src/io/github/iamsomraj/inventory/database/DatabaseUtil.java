@@ -65,7 +65,7 @@ public class DatabaseUtil {
 				stmt.executeUpdate();
 			}
 		} catch (Exception e) {
-			System.out.println("Database: quick test cannot be performed");
+			System.out.println("Database: initial setup cannot be performed");
 		}
 	}
 

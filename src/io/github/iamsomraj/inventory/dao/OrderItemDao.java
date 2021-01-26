@@ -31,7 +31,7 @@ public class OrderItemDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Failed to create " + tableName);
+//			System.out.println("Failed to create " + tableName);
 		}
 	}
 
@@ -41,7 +41,7 @@ public class OrderItemDao {
 			statement.executeUpdate();
 			System.out.println(tableName + " dropped!");
 		} catch (Exception e) {
-			System.out.println("Failed to drop " + tableName);
+//			System.out.println("Failed to drop " + tableName);
 		}
 	}
 

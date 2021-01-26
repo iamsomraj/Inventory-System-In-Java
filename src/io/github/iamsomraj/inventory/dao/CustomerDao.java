@@ -38,9 +38,8 @@ public class CustomerDao {
 					+ "    zip varchar(20)\r\n" + ");" + "");
 			statement.executeUpdate();
 			System.out.println(tableName + " created!");
-
 		} catch (Exception e) {
-			System.out.println("Failed to create " + tableName);
+//			System.out.println("Failed to create " + tableName);
 		}
 	}
 
@@ -50,7 +49,7 @@ public class CustomerDao {
 			statement.executeUpdate();
 			System.out.println(tableName + " dropped!");
 		} catch (Exception e) {
-			System.out.println("Failed to drop " + tableName);
+//			System.out.println("Failed to drop " + tableName);
 		}
 	}
 
