@@ -1,18 +1,34 @@
 package io.github.iamsomraj.inventory.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.OrderItem;
 import io.github.iamsomraj.inventory.model.PurchaseOrder;
 import io.github.iamsomraj.inventory.model.StockItem;
+import io.github.iamsomraj.inventory.service.CustomerService;
 
 public class OrderItemDao {
 	Connection conn = DatabaseUtil.createConnection();
 	private static String tableName = "order_items".toUpperCase();
+	
+static Logger logger = Logger.getLogger(OrderItemDao.class.getName());
+	
+	static {
+		try {
+			logger.addHandler(new FileHandler(OrderItemDao.class.getSimpleName() + "-logs.xml", true));
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void init() {
 		dropOrderItem();
@@ -30,7 +46,7 @@ public class OrderItemDao {
 			System.out.println(tableName + " created!");
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 //			System.out.println("Failed to create " + tableName);
 		}
 	}
@@ -41,6 +57,7 @@ public class OrderItemDao {
 			statement.executeUpdate();
 			System.out.println(tableName + " dropped!");
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 //			System.out.println("Failed to drop " + tableName);
 		}
 	}
@@ -55,6 +72,7 @@ public class OrderItemDao {
 			System.out.println(
 					"Order Item for " + orderItem.getStockItem().getItemDescription() + " is inserted in " + tableName);
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 			System.out.println("Failed to insert in " + tableName);
 		}
 
@@ -75,6 +93,7 @@ public class OrderItemDao {
 				return orderItem;
 			}
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 			System.out.println("Failed to fetch order item from " + tableName);
 		}
 		return null;

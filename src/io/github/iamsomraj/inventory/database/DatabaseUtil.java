@@ -1,6 +1,12 @@
 package io.github.iamsomraj.inventory.database;
 
+import java.io.IOException;
 import java.sql.*;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+
+import io.github.iamsomraj.inventory.service.CustomerService;
+
 
 public class DatabaseUtil {
 
@@ -12,6 +18,18 @@ public class DatabaseUtil {
 	private static String database = "inventory";
 	private static String options = "?autoReconnect=true&useSSL=false";
 
+	static Logger logger = Logger.getLogger(DatabaseUtil.class.getName());
+
+	static {
+		try {
+			logger.addHandler(new FileHandler(DatabaseUtil.class.getSimpleName() + "-logs.xml", true));
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static Connection createConnection() {
 		if (conn == null) {
 			try {
@@ -20,8 +38,10 @@ public class DatabaseUtil {
 				System.out.println("Database connected:");
 				System.out.println("Username: " + username);
 				System.out.println("Database name: " + database);
+				System.out.println();
 				return conn;
 			} catch (Exception e) {
+				logger.info(e.getMessage());
 				System.out.println("Database: cannot connect");
 			}
 		}
@@ -34,6 +54,7 @@ public class DatabaseUtil {
 				System.out.println("Database disconnected!");
 				conn.close();
 			} catch (Exception e) {
+				logger.info(e.getMessage());
 				System.out.println("Database: cannot close");
 			}
 		}
@@ -41,7 +62,7 @@ public class DatabaseUtil {
 
 	public static void quickTest() {
 		try {
-			if ( conn != null) {				
+			if (conn != null) {
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery("select * from dummy");
 				while (rs.next()) {
@@ -49,14 +70,14 @@ public class DatabaseUtil {
 				}
 			}
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 			System.out.println("Database: quick test cannot be performed");
 		}
 	}
-	
 
 	public static void initialSetup() {
 		try {
-			if ( conn != null) {				
+			if (conn != null) {
 				PreparedStatement stmt = conn.prepareStatement("drop database " + database);
 				stmt.executeUpdate();
 				stmt = conn.prepareStatement("create database " + database);
@@ -65,6 +86,7 @@ public class DatabaseUtil {
 				stmt.executeUpdate();
 			}
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 			System.out.println("Database: initial setup cannot be performed");
 		}
 	}

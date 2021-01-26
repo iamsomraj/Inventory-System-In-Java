@@ -1,14 +1,30 @@
 package io.github.iamsomraj.inventory.dao;
 
+import java.io.IOException;
 import java.sql.*;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.Customer;
+import io.github.iamsomraj.inventory.service.CustomerService;
 
 public class CustomerDao {
 
 	Connection conn = DatabaseUtil.createConnection();
 	private static String tableName = "customers".toUpperCase();
+	
+static Logger logger = Logger.getLogger(CustomerDao.class.getName());
+	
+	static {
+		try {
+			logger.addHandler(new FileHandler(CustomerDao.class.getSimpleName() + "-logs.xml", true));
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * @return the tableName
@@ -39,6 +55,7 @@ public class CustomerDao {
 			statement.executeUpdate();
 			System.out.println(tableName + " created!");
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 //			System.out.println("Failed to create " + tableName);
 		}
 	}
@@ -49,6 +66,7 @@ public class CustomerDao {
 			statement.executeUpdate();
 			System.out.println(tableName + " dropped!");
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 //			System.out.println("Failed to drop " + tableName);
 		}
 	}
@@ -69,6 +87,7 @@ public class CustomerDao {
 			statement.executeUpdate();
 			System.out.println(customer.getName() + " is inserted in " + tableName);
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 			System.out.println("Failed to insert in " + tableName);
 		}
 
@@ -88,6 +107,7 @@ public class CustomerDao {
 				return customer;
 			}
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 			System.out.println("Failed to fetch customer with id " + id + " in " + tableName);
 		}
 		return null;

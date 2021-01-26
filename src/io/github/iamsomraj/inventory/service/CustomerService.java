@@ -1,6 +1,7 @@
 package io.github.iamsomraj.inventory.service;
 
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
@@ -9,6 +10,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 import io.github.iamsomraj.inventory.model.Customer;
 import io.github.iamsomraj.inventory.model.InsufficientDataException;
@@ -20,8 +23,21 @@ public class CustomerService {
 	private List<Customer> customers = new ArrayList<Customer>();
 	private String fileName = "src/io/github/iamsomraj/inventory/customer-info.txt";
 
+	static Logger logger = Logger.getLogger(CustomerService.class.getName());
+
+	static {
+		try {
+			logger.addHandler(new FileHandler(CustomerService.class.getSimpleName() + "-logs.xml", true));
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public Customer createCustomer(String str[]) {
-		return new Customer(Integer.parseInt(str[0].trim()), str[1].trim(), str[2].trim(),str[3].trim(),str[4].trim(),str[5].trim(), str[6].trim(), str[7].trim(), str[8].trim());
+		return new Customer(Integer.parseInt(str[0].trim()), str[1].trim(), str[2].trim(), str[3].trim(), str[4].trim(),
+				str[5].trim(), str[6].trim(), str[7].trim(), str[8].trim());
 	}
 
 	public CustomerService() {
@@ -47,6 +63,7 @@ public class CustomerService {
 			file.close();
 		} catch (Exception e) {
 			System.out.println("Data fetch failed: Customer");
+			logger.info("Data fetch failed: Customer: " + e.getMessage());
 			System.out.println(e.getMessage());
 		}
 	}

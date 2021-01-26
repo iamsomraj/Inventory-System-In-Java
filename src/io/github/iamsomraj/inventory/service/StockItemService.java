@@ -1,8 +1,11 @@
 package io.github.iamsomraj.inventory.service;
 
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 import io.github.iamsomraj.inventory.model.InsufficientDataException;
 import io.github.iamsomraj.inventory.model.StockItem;
@@ -12,6 +15,16 @@ public class StockItemService {
 
 	private List<StockItem> stockItems = new ArrayList<StockItem>();
 	private String fileName = "src/io/github/iamsomraj/inventory/data.txt";
+
+	static Logger logger = Logger.getLogger(StockItemService.class.getName());
+	
+	static {
+		try {
+			logger.addHandler(new FileHandler(StockItemService.class.getSimpleName() + "-logs.xml", true));
+		} catch (SecurityException | IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public StockItem createStockItem(String str[]) {
 
@@ -58,6 +71,7 @@ public class StockItemService {
 			file.close();
 		} catch (Exception e) {
 			System.out.println("Data fetch failed: Stock Item");
+			logger.info("Data fetch failed: Stock Item: " + e.getMessage());
 			System.out.println(e.getMessage());
 		}
 	}

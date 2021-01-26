@@ -1,18 +1,34 @@
 package io.github.iamsomraj.inventory.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.Customer;
 import io.github.iamsomraj.inventory.model.PurchaseOrder;
+import io.github.iamsomraj.inventory.service.CustomerService;
 
 public class PurchaseOrderDao {
 
 	Connection conn = DatabaseUtil.createConnection();
 	private static String tableName = "purchase_orders".toUpperCase();
+
+	static Logger logger = Logger.getLogger(PurchaseOrderDao.class.getName());
+
+	static {
+		try {
+			logger.addHandler(new FileHandler(PurchaseOrderDao.class.getSimpleName() + "-logs.xml", true));
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * @return the tableName
@@ -43,6 +59,7 @@ public class PurchaseOrderDao {
 			System.out.println(tableName + " created!");
 
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 //			System.out.println("Failed to create " + tableName);
 		}
 	}
@@ -53,6 +70,7 @@ public class PurchaseOrderDao {
 			statement.executeUpdate();
 			System.out.println(tableName + " dropped!");
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 //			System.out.println("Failed to drop " + tableName);
 		}
 	}
@@ -67,7 +85,7 @@ public class PurchaseOrderDao {
 			statement.executeUpdate();
 			System.out.println("Purchase Order " + purchaseOrder.getPoNumber() + " is inserted in " + tableName);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			System.out.println("Failed to insert in " + tableName);
 		}
 
@@ -89,6 +107,7 @@ public class PurchaseOrderDao {
 				return purchaseOrder;
 			}
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 			System.out.println("Failed to fetch purchase order with number " + poNumber + " in " + tableName);
 		}
 		return null;

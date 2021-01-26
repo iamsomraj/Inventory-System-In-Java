@@ -20,10 +20,6 @@ public class DatabaseService {
 	public DatabaseService() {
 		super();
 		DatabaseUtil.initialSetup();
-		customerDao.dropCustomer();
-		stockItemDao.dropStockItem();
-		purchaseOrderDao.dropPurchaseOrder();
-		orderItemDao.dropOrderItem();
 		customerDao.createCustomer();
 		stockItemDao.createStockItem();
 		purchaseOrderDao.createPurchaseOrder();

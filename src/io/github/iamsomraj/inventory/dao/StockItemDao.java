@@ -1,17 +1,33 @@
 package io.github.iamsomraj.inventory.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.StockItem;
 import io.github.iamsomraj.inventory.model.StockItem.Unit;
+import io.github.iamsomraj.inventory.service.CustomerService;
 
 public class StockItemDao {
 	Connection conn = DatabaseUtil.createConnection();
 	private static String tableName = "stock_items".toUpperCase();
+
+	static Logger logger = Logger.getLogger(StockItemDao.class.getName());
+
+	static {
+		try {
+			logger.addHandler(new FileHandler(StockItemDao.class.getSimpleName() + "-logs.xml", true));
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * @return the tableName
@@ -42,6 +58,7 @@ public class StockItemDao {
 			System.out.println(tableName + " created!");
 
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 //			System.out.println("Failed to create " + tableName);
 		}
 	}
@@ -52,6 +69,7 @@ public class StockItemDao {
 			statement.executeUpdate();
 			System.out.println(tableName + " dropped!");
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 //			System.out.println("Failed to drop " + tableName);
 		}
 	}
@@ -67,6 +85,7 @@ public class StockItemDao {
 			statement.executeUpdate();
 			System.out.println(stockItem.getItemDescription() + " is inserted in " + tableName);
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 			System.out.println("Failed to insert in " + tableName);
 		}
 
@@ -102,6 +121,7 @@ public class StockItemDao {
 				return stockItem;
 			}
 		} catch (Exception e) {
+			logger.info(e.getMessage());
 			System.out.println("Failed to fetch stockitem with itemNumber " + itemNumber + " in " + tableName);
 		}
 		return null;
