@@ -52,7 +52,7 @@ public class PurchaseOrder {
 		return true;
 	}
 
-	double sumItems() {
+	public double sumItems() {
 		double sum = 0d;
 		for (int i = 0; i < getOrderItems().length; i++) {
 			OrderItem orderItem = getOrderItems()[i];

@@ -56,7 +56,7 @@ import io.github.iamsomraj.inventory.service.StockItemService;
  *
  */
 public class InventoryUtil {
-	
+
 	public static void printLines() {
 		System.out.println();
 		System.out.println();
@@ -70,31 +70,30 @@ public class InventoryUtil {
 	public static void main(String[] args) {
 
 		System.out.println("Somraj's Inventory System:");
-		
+
 		printLines();
-		
+
 		CustomerService customerService = new CustomerService();
 		List<Customer> customerList = customerService.getCustomers();
-		
+
 		printLines();
 
 		Customer jamie = customerList.get(0);
 		Customer bill = customerList.get(1);
 		Customer joe = customerList.get(2);
 		Customer somraj = customerList.get(3);
-		
 
 		StockItemService stockItemService = new StockItemService();
 		List<StockItem> listOfStockItems = stockItemService.getStockItems();
 
 		printLines();
-		
+
 		StockItem milk = listOfStockItems.get(0);
 		StockItem chicken = listOfStockItems.get(1);
 		StockItem egg = listOfStockItems.get(2);
 		StockItem apple = listOfStockItems.get(3);
 		StockItem orange = listOfStockItems.get(4);
-		
+
 		OrderItem milkOrder1 = new OrderItem(12, milk);
 		OrderItem chickenOrder1 = new OrderItem(2, chicken);
 		OrderItem eggOrder1 = new OrderItem(12, egg);
@@ -120,21 +119,21 @@ public class InventoryUtil {
 		PurchaseOrder purchaseOrder4 = new PurchaseOrder(orders4);
 
 		printLines();
-		
-		purchaseOrder1.create(1, Date.valueOf("2020-10-5"));
-		purchaseOrder2.create(2, Date.valueOf("2020-10-7"));
-		purchaseOrder3.create(3, Date.valueOf("2020-10-9"));
-		purchaseOrder4.create(4, Date.valueOf("2020-10-11"));
+
+		purchaseOrder1.create(1, Date.valueOf("2021-1-5"));
+		purchaseOrder2.create(2, Date.valueOf("2021-1-7"));
+		purchaseOrder3.create(3, Date.valueOf("2021-1-9"));
+		purchaseOrder4.create(4, Date.valueOf("2021-1-11"));
 
 		printLines();
-		
-		purchaseOrder1.shipOrder(Date.valueOf("2020-10-11"));
-		purchaseOrder2.shipOrder(Date.valueOf("2020-10-15"));
-		purchaseOrder3.shipOrder(Date.valueOf("2020-10-19"));
-		purchaseOrder4.shipOrder(Date.valueOf("2020-10-25"));
+
+		purchaseOrder1.shipOrder(Date.valueOf("2021-1-11"));
+		purchaseOrder2.shipOrder(Date.valueOf("2021-1-20"));
+		purchaseOrder3.shipOrder(Date.valueOf("2021-1-25"));
+		purchaseOrder4.shipOrder(Date.valueOf("2021-1-31"));
 
 		printLines();
-		
+
 		System.out.println("Purchase Orders are displayed: ");
 		System.out.println(purchaseOrder1);
 		System.out.println(purchaseOrder2);
@@ -155,14 +154,14 @@ public class InventoryUtil {
 		somraj.setPurchaseOrder(new PurchaseOrder[] { purchaseOrder4 });
 
 		printLines();
-		
+
 		System.out.println("Total sales of a customer: ");
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
 			System.out.println(cust.getName().toUpperCase() + ":\t$" + cust.getTotalSales());
 		}
 
 		printLines();
-		
+
 		System.out.println("Customers: ");
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
 			System.out.println(cust);
@@ -198,6 +197,21 @@ public class InventoryUtil {
 
 		System.out.println("Area wise total bill amount: ");
 		System.out.println(customerService.getAreaWiseTotalBill());
+		
+		printLines();
+
+		customerService.printAllShippedOrdersForLastMonth();
+
+		printLines();
+
+		System.out.println("Total sale done in last month: ");
+		System.out.println(customerService.totalSaleDoneInLastMonth());
+		
+		printLines();
+		
+		customerService.printAllItemToBeShippenInCurrentWeek();
+		
+		printLines();
 
 		printLines();
 
@@ -218,7 +232,7 @@ public class InventoryUtil {
 		}
 
 		printLines();
-		
+
 		System.out.println("Storing all the stock items details in database: ");
 		for (StockItem stockItem : new StockItem[] { milk, chicken, egg, apple, orange }) {
 			databaseService.insertStockItem(stockItem);
@@ -232,7 +246,7 @@ public class InventoryUtil {
 		}
 
 		printLines();
-		
+
 		System.out.println("Storing all the purchase order details in database: ");
 		for (Customer cust : new Customer[] { jamie, bill, joe, somraj }) {
 			if (cust.getPurchaseOrders() != null) {
@@ -284,7 +298,7 @@ public class InventoryUtil {
 		}
 
 		printLines();
-
+		
 		DatabaseUtil.closeConnection();
 	}
 

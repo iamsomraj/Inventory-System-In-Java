@@ -2,6 +2,8 @@ package io.github.iamsomraj.inventory.service;
 
 import java.io.FileReader;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -166,6 +168,52 @@ public class CustomerService {
 			result.put(area, totalBill);
 		}
 		return result;
+	}
+
+	public void printAllShippedOrdersForLastMonth() {
+		System.out.println(
+				"Printing all shipped orders for (" + LocalDate.now().minusMonths(1) + " - " + LocalDate.now() + "): ");
+		for (Customer cust : customers) {
+			if (cust.getPurchaseOrders() != null) {
+				for (PurchaseOrder pord : cust.getPurchaseOrders()) {
+					if (Period.between(pord.getShipDate().toLocalDate(), LocalDate.now()).getMonths() <= 1) {
+						System.out.println(pord);
+					}
+				}
+			}
+		}
+	}
+
+	public double totalSaleDoneInLastMonth() {
+		System.out.println("Checking orders for (" + LocalDate.now().minusMonths(1) + " - " + LocalDate.now() + "): ");
+		double totalSale = 0d;
+		for (Customer cust : customers) {
+			if (cust.getPurchaseOrders() != null) {
+				for (PurchaseOrder pord : cust.getPurchaseOrders()) {
+					if (Period.between(pord.getOrderDate().toLocalDate(), LocalDate.now()).getMonths() <= 1) {
+						totalSale += pord.sumItems();
+					}
+				}
+			}
+		}
+		return totalSale;
+	}
+
+	public void printAllItemToBeShippenInCurrentWeek() {
+		System.out.println("Printing all shipped orders for this week (" + LocalDate.now().minusWeeks(1) + " - "
+				+ LocalDate.now() + "): ");
+		for (Customer cust : customers) {
+			if (cust.getPurchaseOrders() != null) {
+				for (PurchaseOrder pord : cust.getPurchaseOrders()) {
+					if (Period.between(pord.getShipDate().toLocalDate(), LocalDate.now()).getDays() <= 7) {
+						for (OrderItem ord : pord.getOrderItems()) {
+							System.out.println(ord.getStockItem().getItemDescription() + ": " + ord.getNumberOfItems()
+									+ " " + ord.getStockItem().getUnit());
+						}
+					}
+				}
+			}
+		}
 	}
 
 }
