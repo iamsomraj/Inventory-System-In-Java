@@ -6,7 +6,7 @@ I have created this repository for creating my **own customized Inventory System
 
 > In the next few lines, I would like to summarize the general workflow of my project for easy understanding.
 
-1. Fetching infomration from text files
+1. Fetching information from text files
 2. With the fetched information, I have done the following operations in the same order:
 
 - Creating customers and updating customer information.
