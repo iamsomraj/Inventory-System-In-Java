@@ -2,6 +2,8 @@ package io.github.iamsomraj.inventory.model;
 
 import java.util.Arrays;
 
+import io.github.iamsomraj.inventory.service.FileService;
+
 public class Customer {
 	private int id;
 	private String name, homePhone, cellPhone, workPhone, street, city, state, zip;
@@ -191,14 +193,22 @@ public class Customer {
 	}
 
 	public void printInvoice() {
-		System.out.println("Invoice for " + name.toUpperCase() + ": ");
+		String invoice = "";
+		invoice += "Invoice for " + name.toUpperCase() + ": ";
+		System.out.println(invoice);
 		if (purchaseOrders != null) {
 			for (int i = 0; i < purchaseOrders.length; i++) {
 				PurchaseOrder purchaseOrder = purchaseOrders[i];
+				invoice += "\n";
+				invoice += purchaseOrder.getOrderDate() + " - " + purchaseOrder.getShipDate() + " $"
+						+ purchaseOrder.sumItems();
 				System.out.println(purchaseOrder.getOrderDate() + " - " + purchaseOrder.getShipDate() + " $"
 						+ purchaseOrder.sumItems());
 			}
 		}
+		invoice += "\n";
+		invoice += "Total: $" + getTotalSales();
+		FileService.writeToFile(name.toUpperCase() + " - INVOICE", "txt", invoice);
 		System.out.println("Total: $" + getTotalSales());
 	}
 

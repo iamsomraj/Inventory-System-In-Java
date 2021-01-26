@@ -41,6 +41,16 @@ I have created this repository for creating my **own customized Inventory System
 
 ┃ ┗ 📜DatabaseUtil.java
 
+┣ 📂invoices
+
+┃ ┣ 📜BILL - INVOICE.txt
+
+┃ ┣ 📜JAMIE - INVOICE.txt
+
+┃ ┣ 📜JOE - INVOICE.txt
+
+┃ ┗ 📜SOMRAJ - INVOICE.txt
+
 ┣ 📂model
 
 ┃ ┣ 📜Customer.java
@@ -58,6 +68,8 @@ I have created this repository for creating my **own customized Inventory System
 ┃ ┣ 📜CustomerService.java
 
 ┃ ┣ 📜DatabaseService.java
+
+┃ ┣ 📜FileService.java
 
 ┃ ┗ 📜StockItemService.java
 
