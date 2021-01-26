@@ -4,10 +4,6 @@ import java.util.Arrays;
 import java.sql.Date;
 import java.util.List;
 
-import io.github.iamsomraj.inventory.dao.CustomerDao;
-import io.github.iamsomraj.inventory.dao.OrderItemDao;
-import io.github.iamsomraj.inventory.dao.PurchaseOrderDao;
-import io.github.iamsomraj.inventory.dao.StockItemDao;
 import io.github.iamsomraj.inventory.database.DatabaseUtil;
 import io.github.iamsomraj.inventory.model.Customer;
 import io.github.iamsomraj.inventory.model.OrderItem;
@@ -184,7 +180,7 @@ public class InventoryUtil {
 		printLines();
 
 		System.out.println("Find orders placed on a date: ");
-		Date findDate = Date.valueOf("2020-10-15");
+		Date findDate = Date.valueOf("2021-1-20");
 		System.out.println("Orders shipped on " + findDate + ": ");
 		System.out.println(Arrays.toString(customerService.findOrdersToBeShippedOn(findDate)));
 
