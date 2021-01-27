@@ -66,6 +66,10 @@ I have created this repository for creating my **own customized Inventory System
 
 ┃ ┗ 📜DatabaseUtil.java
 
+┣ 📂exception
+
+┃ ┗ 📜InsufficientDataException.java
+
 ┣ 📂invoices
 
 ┃ ┣ 📜BILL - INVOICE.txt
@@ -77,8 +81,6 @@ I have created this repository for creating my **own customized Inventory System
 ┣ 📂model
 
 ┃ ┣ 📜Customer.java
-
-┃ ┣ 📜InsufficientDataException.java
 
 ┃ ┣ 📜OrderItem.java
 
@@ -98,9 +100,9 @@ I have created this repository for creating my **own customized Inventory System
 
 ┣ 📂tester
 
-┃ ┣ 📜CustomerTest.java
+┃ ┣ 📜CustomerTester.java
 
-┃ ┗ 📜InventoryUtil.java
+┃ ┗ 📜InventoryTester.java
 
 ┣ 📜customer-info.txt
 

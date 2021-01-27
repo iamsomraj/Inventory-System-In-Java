@@ -2,7 +2,7 @@ package io.github.iamsomraj.inventory.tester;
 
 import io.github.iamsomraj.inventory.model.Customer;
 
-public class CustomerTest {
+public class CustomerTester {
 
 	public static void main(String[] args) {
 		Customer customer1 = new Customer(1, "Aa Aaa");

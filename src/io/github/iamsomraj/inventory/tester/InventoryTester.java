@@ -52,7 +52,7 @@ import io.github.iamsomraj.inventory.service.StockItemService;
  * @author Somraj Mukherjee
  *
  */
-public class InventoryUtil {
+public class InventoryTester {
 
 	public static void printLines() {
 		System.out.println();

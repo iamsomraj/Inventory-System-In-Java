@@ -13,8 +13,8 @@ import java.util.Set;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
+import io.github.iamsomraj.inventory.exception.InsufficientDataException;
 import io.github.iamsomraj.inventory.model.Customer;
-import io.github.iamsomraj.inventory.model.InsufficientDataException;
 import io.github.iamsomraj.inventory.model.OrderItem;
 import io.github.iamsomraj.inventory.model.PurchaseOrder;
 
